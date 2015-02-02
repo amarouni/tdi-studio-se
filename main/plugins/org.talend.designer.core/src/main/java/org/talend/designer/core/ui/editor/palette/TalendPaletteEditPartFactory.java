@@ -13,21 +13,41 @@
 package org.talend.designer.core.ui.editor.palette;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteEntry;
+import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.ui.palette.PaletteEditPartFactory;
+import org.talend.themes.core.elements.stylesettings.TalendPaletteCSSStyleSetting;
 
 /**
  * 
  */
 public class TalendPaletteEditPartFactory extends PaletteEditPartFactory {
 
+    protected TalendPaletteCSSStyleSetting cssStyleSetting;
+
+    public TalendPaletteEditPartFactory(TalendPaletteCSSStyleSetting cssStyleSetting) {
+        this.cssStyleSetting = cssStyleSetting;
+    }
+
+    @Override
+    protected EditPart createMainPaletteEditPart(EditPart parentEditPart, Object model) {
+        return new TalendSliderPaletteEditPart((PaletteRoot) model, cssStyleSetting);
+    }
+
+    @Override
     protected EditPart createDrawerEditPart(EditPart parentEditPart, Object model) {
-        return new TalendDrawerEditPart((PaletteDrawer) model);
+        return new TalendDrawerEditPart((PaletteDrawer) model, cssStyleSetting);
     }
 
+    @Override
     protected EditPart createEntryEditPart(EditPart parentEditPart, Object model) {
-        return new TalendEntryEditPart((PaletteEntry) model);
+        return new TalendEntryEditPart((PaletteEntry) model, cssStyleSetting);
     }
 
+    @Override
+    protected EditPart createGroupEditPart(EditPart parentEditPart, Object model) {
+        return new TalendGroupEditPart((PaletteContainer) model);
+    }
 }
