@@ -261,6 +261,14 @@ public class ExternalNodeChangeCommand extends Command {
                             table.setListColumns(newListColumns);
                         }
                     }
+                    // MODELENCODER rules : Propaget input between tModelEncoder components when connected with
+                    // MODELCOMBINE link
+                    if (connection.getConnectorName() != null && connection.getConnectorName().equals("MODELCOMBINE")) { //$NON-NLS-1$
+                        IMetadataTable table = sourceNode.getMetadataFromConnector(EConnectionType.FLOW_MAIN.getName());
+                        if (table != null) {
+                            table.setListColumns(newListColumns);
+                        }
+                    }
                     ColumnListController.updateColumnList(sourceNode, columnNameChangeds, false);
                     if (empty) { // trace init
                         connection.initTraceParamters();

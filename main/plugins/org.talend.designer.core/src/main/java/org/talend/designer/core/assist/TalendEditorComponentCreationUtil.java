@@ -214,6 +214,13 @@ public class TalendEditorComponentCreationUtil {
             }
         }
 
+        // MODELENCODER rules : Only MODELCOMBINE links between tModelEncoder components
+        if (lineStyle.hasConnectionCategory(IConnectionCategory.FLOW) && "MODELCOMBINE".equals(connectorName)) { //$NON-NLS-1$
+            if (!component.getName().startsWith("tModelEncoder")) { //$NON-NLS-1$
+                return false;
+            }
+        }
+
         // TDI-29775 : avoid any connection for components not accepting SPARK
         if (lineStyle.hasConnectionCategory(IConnectionCategory.FLOW) && "SPARKCOMBINE".equals(connectorName)) { //$NON-NLS-1$
             if (!component.getName().startsWith("tSpark")) { //$NON-NLS-1$
