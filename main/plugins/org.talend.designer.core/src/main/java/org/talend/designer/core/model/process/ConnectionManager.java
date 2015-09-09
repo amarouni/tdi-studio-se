@@ -509,10 +509,17 @@ public class ConnectionManager {
             }
         }
 
-        // MODELENCODER rules : Only MODELCOMBINE links between tModelEncoder components
+        // MODELENCODER connection rules : Only MODELCOMBINE links between tModelEncoder components
         if (newlineStyle.hasConnectionCategory(IConnectionCategory.FLOW) && "MODELCOMBINE".equals(connectorName)) { //$NON-NLS-1$
             if (!newTarget.getComponent().getName().startsWith("tModelEncoder")) { //$NON-NLS-1$
                 return false;
+            }
+        }
+        if (newTarget.getComponent() != null && newTarget.getComponent().getName().startsWith("tModelEncoder")) { //$NON-NLS-1$
+            if (source.getComponent() != null && source.getComponent().getName().startsWith("tModelEncoder")) { //$NON-NLS-1$
+                if (newlineStyle.hasConnectionCategory(IConnectionCategory.FLOW) && !"MODELCOMBINE".equals(connectorName)) { //$NON-NLS-1$
+                    return false;
+                }
             }
         }
 
