@@ -33,7 +33,7 @@ import org.talend.designer.core.model.utils.emf.talendfile.ProcessType;
 /**
  * 
  * Set the Spark Dataframe Alphabatical sort order in tHiveOutput & tFileParquet. If the component doesn't have the
- * checkbox then we want to maintain the default (alphabatical) order.
+ * checkbox then we want to maintain the legacy (alphabatical) order.
  * 
  */
 @SuppressWarnings("deprecation")

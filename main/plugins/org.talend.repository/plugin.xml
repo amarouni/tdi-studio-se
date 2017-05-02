@@ -2913,7 +2913,7 @@
               breaks="6.1.0"
               class="org.talend.repository.model.migration.spark.SetSparkDataframeAlphabeticalSortOrder"
               id="org.talend.repository.model.migration.SetSparkDataframeAlphabeticalSortOrder"
-              name="Set the Spark Dataframe Alphabatical sort order in tHiveOutput and tFileParquet"
+              name="Set the Spark Dataframe Alphabatical sort order in tHiveOutput and tFileOutputParquet"
               version="6.1.0">
         </projecttask>
    </extension>
